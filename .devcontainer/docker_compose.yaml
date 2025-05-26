@@ -2,11 +2,12 @@ version: '3.8'
 
 services:
   processor:
-    build: .  # Tells Docker Compose to use the current directory to build the image (based on the Dockerfile)
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./input:/app/input
-      - ./output:/app/output
-      - ./logs:/app/logs
+      - ../:/
+    working_dir: /
     depends_on:
       - ollama  # Ensure that the processor service waits for ollama to be available
     ports:

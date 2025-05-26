@@ -8,11 +8,15 @@
 		"context": "../"
 	},
 	
+	// "dockerComposeFile":"docker_compose.yaml",
+	// "service": "processor",
+	// "workspaceFolder": "/workspace",
+
 	"features": {
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
 		"ghcr.io/devcontainers/features/git-lfs:1": {}
 	},
-
+	
 	"portsAttributes": {
 		"3000": {
 			"label": "Application",

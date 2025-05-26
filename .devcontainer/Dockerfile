@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     libsm6 \
     libxext6 \
     libxrender-dev \
+    poppler-utils \
     libglib2.0-0 \
     libpoppler-cpp0v5 \
     libjpeg-dev \
@@ -30,7 +31,7 @@ RUN python -m pip install --no-cache-dir \
 RUN chmod -R a+w /usr/local/lib/python3.12/site-packages/paddlex/utils/fonts
 
 # Set working directory
-WORKDIR /workspace
+WORKDIR /
 
 # Copy project files
 COPY . .
@@ -40,5 +41,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the main script
 CMD ["python", "main.py"]
-
 
