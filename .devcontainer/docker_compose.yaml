@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  processor:
+    build: .  # Tells Docker Compose to use the current directory to build the image (based on the Dockerfile)
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./logs:/app/logs
+    depends_on:
+      - ollama  # Ensure that the processor service waits for ollama to be available
+    ports:
+      - "5000:5000"  # Expose a port if needed for the processor service
+    environment:
+      - ENV_VAR_1=value1  # Any necessary environment variables for the processor
+
+  ollama:
+    image: ollama/ollama  # Pull the pre-built ollama image from Docker Hub
+    ports:
+      - "11434:11434"  # Expose the port for ollama service
+    environment:
+      - ENV_VAR_2=value2  # Any necessary environment variables for ollama
